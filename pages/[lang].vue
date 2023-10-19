@@ -38,7 +38,9 @@ provide(injectKeys.lang, lang)
 </script>
 
 <template>
+
 <CMSProject :project="project" :collections="collections" :region="lang" >
+    <Header></Header>
     <NuxtLayout>  
         <NuxtPage />
     </NuxtLayout>

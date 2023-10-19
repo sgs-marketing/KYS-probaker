@@ -2,6 +2,7 @@
 const defaultContent = {
     headerTitle: "",
     headerSpanTitle: "",
+    headerImage: []
 }
 </script>
 
@@ -9,6 +10,7 @@ const defaultContent = {
 <CMSExtractSingle collection="home" :defaults="defaultContent" v-slot="{ data }">
    <h1>{{ data.headerTitle }}</h1>
    <h1>{{ data.headerSpanTitle }}</h1>
+   <p v-for="image in data.headerImage">{{ image }}</p>
 </CMSExtractSingle>
 </template>
 
