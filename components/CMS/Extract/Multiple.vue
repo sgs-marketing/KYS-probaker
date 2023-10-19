@@ -1,21 +1,23 @@
-<script setup lang="ts" generic="K extends string">
-import { asyncComputed } from '@vueuse/core';
-import { Item  } from 'lesscms';
-import { PosibleContentTypes } from 'lesscms/dist/utils/types';
+<script setup lang="ts" generic="O extends Record<string, PosibleContentTypes>">
+import { asyncComputed } from "@vueuse/core";
+import { Item } from "lesscms";
+import { PosibleContentTypes } from "lesscms/dist/utils/types";
+import { getMuiltipleItems } from "../utils";
+
 
 const prop = defineProps<{
     items: Item[]
 
-    keys: Readonly<K[]>
-
+    defaults: O
     ids?: string[]
 }>()
 
-const reload = inject('reload') as Ref<string>
+const reload = inject("reload") as Ref<string>
 
 const emit = defineEmits<{
-    (event: 'data', data: Record<K, PosibleContentTypes | null>[]): void
+    (event: "data", data: O[]): void
 }>()
+
 
 const findItems = (items: Item[]) => {
     if (prop.ids) {
@@ -30,7 +32,7 @@ const items = computed(() => {
 })
 
 let hasLoaded = false
-const initalData = await getMuiltipleDataFromItem(items.value, prop.keys)
+const initalData = await getMuiltipleItems<O>(items.value, prop.defaults)
 
 const itemsData = asyncComputed(async () => {
     reload.value
@@ -39,33 +41,11 @@ const itemsData = asyncComputed(async () => {
         return initalData
     }
 
-    return await getMuiltipleDataFromItem(items.value, prop.keys)
+    return await getMuiltipleItems<O>(items.value, prop.defaults)
 }, initalData)
 
-
-async function getMuiltipleDataFromItem(items: Item[], keys: Readonly<K[]>): Promise<Record<K, PosibleContentTypes | null>[]>  {
-    const values = await Promise.all(items.map(async (item) => {
-        return await getDataFromItem(item, keys)
-    }));
-    
-    return values
-}
-
-async function getDataFromItem(item: Item, keys: Readonly<K[]>): Promise<Record<K, PosibleContentTypes | null>>  {
-    let data = {} as Record<K, PosibleContentTypes | null>
-
-    for (const key of keys) {
-        if (key == 'id') {
-            data[key as K] = item.id
-        }
-        data[key as K] = await item.getContent(key, {autoFileURL: true});
-    }
-
-    return data
-}
-
 watchEffect(() => {
-    emit('data', itemsData.value)
+    emit("data", itemsData.value)
 })
 </script>
 

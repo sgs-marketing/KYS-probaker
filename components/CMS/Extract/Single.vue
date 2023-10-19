@@ -1,8 +1,7 @@
 <script setup lang="ts" generic="O extends Record<string, PosibleContentTypes>">
-import { asyncComputed } from '@vueuse/core';
-import { PosibleContentTypes } from 'lesscms/dist/utils/types';
-import { getDataFromItem, ReturnType, ProjectPromise } from "../utils";
-
+import { asyncComputed } from "@vueuse/core";
+import { PosibleContentTypes } from "lesscms/dist/utils/types";
+import { getDataFromItem, ProjectPromise } from "../utils";
 
 const prop = defineProps<{
     collection: string
@@ -10,11 +9,11 @@ const prop = defineProps<{
 }>()
 
 const emit = defineEmits<{
-    (event: 'data', data: ReturnType): void
+    (event: "data", data: O): void
 }>()
 
 const initalState = inject("project") as Ref<Promise<ProjectPromise>>
-const reload = inject('reload') as Ref<string>
+const reload = inject("reload") as Ref<string>
 
 
 const project = asyncComputed<ProjectPromise>(async () => {
@@ -26,7 +25,7 @@ const singleItem = computed(() => {
 })
 
 let hasLoaded = false
-const initalData = await getDataFromItem(singleItem.value, prop.defaults)
+const initalData = await getDataFromItem<O>(singleItem.value, prop.defaults)
 
 const itemData = asyncComputed(async () => {
     reload.value
@@ -35,12 +34,12 @@ const itemData = asyncComputed(async () => {
         return initalData
     }
     
-    return await getDataFromItem(singleItem.value, prop.defaults)
+    return await getDataFromItem<O>(singleItem.value, prop.defaults)
 }, initalData)
 
 
 watchEffect(() => {
-    emit('data', itemData.value)
+    emit("data", itemData.value)
 })
 </script>
 

@@ -1,7 +1,6 @@
 import { Item, Project, RegionData } from "lesscms"
 import { PosibleContentTypes } from "lesscms/dist/utils/types"
 
-export type ReturnType = Record<string, PosibleContentTypes>
 
 export type ProjectPromise = {
     collections: Record<string, Item[]>
@@ -11,7 +10,6 @@ export type ProjectPromise = {
         data: RegionData;
     }[]
 }
-
 
 export function findItem(collection: Item[], id?:string) {
     let item: Item | Item[] = collection
@@ -45,21 +43,24 @@ export function findMultipleItems(collection: Item[], ids?:string[]) {
     return item
 }
 
-export async function getMuiltipleItems(items: Item[], defaults:ReturnType): Promise<ReturnType[]>  {
+
+type ReturnType = Record<string, PosibleContentTypes>
+
+export async function getMuiltipleItems<O>(items: Item[], defaults:ReturnType): Promise<O[]>  {
     let content = await Promise.all(items.map(async (item) => {
-        return await getDataFromItem(item, defaults)
+        return await getDataFromItem<O>(item, defaults)
     }))
 
     return content
 }
 
-export async function getDataFromItem(item: Item, defaults:ReturnType): Promise<ReturnType>  {
-    if(item == undefined) return {} as ReturnType
-
+export async function getDataFromItem<O>(item: Item, defaults:ReturnType): Promise<O>  {
+    if(item == undefined) return {} as O
+    
     let data = {} as ReturnType
-
+    
     for (const key in defaults) {
-        if (key == 'id') {
+        if (key == "id") {
             data[key] = item.id
             continue
         }
@@ -73,5 +74,5 @@ export async function getDataFromItem(item: Item, defaults:ReturnType): Promise<
         data[key] = response
     }
 
-    return data
+    return data as O
 }

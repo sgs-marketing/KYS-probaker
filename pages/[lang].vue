@@ -1,6 +1,6 @@
 <script setup lang="ts">
-import { injectKeys } from '~/utils/types';
-import { Project } from 'lesscms';
+import { injectKeys } from "~/utils/types";
+import { Project } from "lesscms";
 
 const project = new Project("https://less.systems/", {
     project: "iOoSLguEN6573OenkcCU",
@@ -8,10 +8,10 @@ const project = new Project("https://less.systems/", {
 })
 
 const collections = [
-    'home', 'aboutus', 'navigationBar',
-    'products', 'shopingCart', 'faq',
-    'footer', 'productsReviews', 'productView',
-    'faq', 'faqQuestions', 'productFaq'
+    "home", "aboutus", "navigationBar",
+    "products", "shopingCart", "faq",
+    "footer", "productsReviews", "productView",
+    "faq", "faqQuestions", "productFaq"
 ]
 
 const route = useRoute()

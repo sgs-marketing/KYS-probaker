@@ -1,6 +1,6 @@
 <script setup lang="ts">
-import { Item, Project } from 'lesscms';
-import { RegionData } from 'lesscms/dist/utils/types';
+import { Item, Project } from "lesscms";
+import { RegionData } from "lesscms/dist/utils/types";
 
 const props = defineProps<{
     project: Project
@@ -42,7 +42,7 @@ async function loadProject() {
 }
 
 function findRegionIdToLanguageCode(regions: Region[], languageCode: string) {
-    if (languageCode == 'en') return 'global'
+    if (languageCode == "en") return "global"
     const region = regions.find(region => region.data.languages.includes(languageCode))
     
     if (region == undefined) throw createError({ 
@@ -55,7 +55,7 @@ function findRegionIdToLanguageCode(regions: Region[], languageCode: string) {
 }
 
 const loadPromise = ref(loadProject())
-const reload = ref('')
+const reload = ref("")
 
 provide("project", loadPromise)
 provide("reload", reload)

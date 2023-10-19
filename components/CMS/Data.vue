@@ -8,9 +8,9 @@ const props = defineProps<{
 }>()
 
 const emit = defineEmits<{
-    (event: 'single', value: Item): void
-    (event: 'items', value: Item[]): void
-    (event: 'regions', value: {
+    (event: "single", value: Item): void
+    (event: "items", value: Item[]): void
+    (event: "regions", value: {
         id: string;
         data: RegionData;
     }[]): void
@@ -40,11 +40,11 @@ const singleItem = computed(() => {
 })
 
 watchEffect(() => {
-    emit('single', singleItem.value)
-    emit('items', collection.value)
+    emit("single", singleItem.value)
+    emit("items", collection.value)
 })
 
-emit('regions', project.value.regions)
+emit("regions", project.value.regions)
 </script>
 
 <template>

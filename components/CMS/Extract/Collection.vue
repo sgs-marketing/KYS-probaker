@@ -1,7 +1,7 @@
 <script setup lang="ts" generic="O extends Record<string, PosibleContentTypes>">
 import { asyncComputed } from "@vueuse/core";
 import { PosibleContentTypes } from "lesscms/dist/utils/types";
-import { findItem, findMultipleItems, getDataFromItem, getMuiltipleItems, ReturnType, ProjectPromise } from "../utils";
+import { findItem, findMultipleItems, getDataFromItem, getMuiltipleItems, ProjectPromise } from "../utils";
 
 const prop = defineProps<{
     collection: string,
@@ -11,12 +11,12 @@ const prop = defineProps<{
 }>()
 
 const emit = defineEmits<{
-    (event: 'collection', value: ReturnType[]): void
-    (event: 'data', value: ReturnType): void
+    (event: "collection", value: O[]): void
+    (event: "data", value: O): void
 }>()
 
 const state = (inject("project") as Ref<Promise<ProjectPromise>> )
-const reload = inject('reload') as Ref<string>
+const reload = inject("reload") as Ref<string>
 
 const project = asyncComputed<ProjectPromise>(async () => {
     return await state.value
@@ -44,17 +44,17 @@ const items = computed(() => {
 })
 
 let hasLoaded = false
-const initalData = await getDataFromItem(item.value, prop.defaults)
-const initalCollection = await getMuiltipleItems(items.value, prop.defaults)
+const initalData = await getDataFromItem<O>(item.value, prop.defaults)
+const initalCollection = await getMuiltipleItems<O>(items.value, prop.defaults)
 
-const itemData = asyncComputed<O>(async () => {
+const itemData = asyncComputed(async () => {
     reload.value
     if (!hasLoaded) {
         hasLoaded = true 
-        return initalData as O
+        return initalData
     }
     
-    return await getDataFromItem(item.value, prop.defaults) as O
+    return await getDataFromItem<O>(item.value, prop.defaults) as O
 }, initalData as O)
 
 let hasLoadedCollection = false
@@ -65,12 +65,12 @@ const collectionData = asyncComputed<O[]>(async () => {
         return initalCollection as O[]
     }
     
-    return await getMuiltipleItems(items.value, prop.defaults) as O[]
+    return await getMuiltipleItems<O>(items.value, prop.defaults) as O[]
 }, initalCollection as O[])
 
 watchEffect(() => {
-    emit('data', itemData.value)
-    emit('collection', collectionData.value)
+    emit("data", itemData.value)
+    emit("collection", collectionData.value)
 })
 </script>
 
