@@ -35,6 +35,10 @@ body, * {
   box-sizing: border-box;
 
   &[data-bold] {
+    font-weight: 700;
+  }
+
+  &[data-semibold] {
     font-weight: 600;
   }
 
@@ -45,6 +49,31 @@ body, * {
   &[data-grey] {
     color: var(--grey);
   }
+
+  &[data-plain] {
+    text-decoration: none;
+  }
+
+  &[data-white] {
+    color: #fff;
+  }
+
+  &[data-border-dark] {
+    border: var(--dark-border);
+  }
+  
+  &[data-border-grey] {
+    border: var(--grey-border);
+  }
+
+  &[data-border-bright] {
+    border: var(--bright-border);
+  }
+
+  &[data-border-radius] {
+    border-radius: var(--border-radius);
+  }
+
 }
 
 h1 {
@@ -62,6 +91,13 @@ h2 {
 h3 {
   color: var(--black);
   font-size: 1.25rem;
+  font-weight: 400;
+
+}
+
+h4 {
+  color: var(--black);
+  font-size: 1.125rem;
   font-weight: 400;
 
 }

@@ -3,15 +3,13 @@ import { injectKeys } from "~/utils/types";
 import { Project } from "lesscms";
 
 const project = new Project("https://less.systems/", {
-    project: "iOoSLguEN6573OenkcCU",
-    publicToken: "7cef66fb-4153-4af1-8b8f-82ce77f3b705",
+    project: "zWmhcjNSjtC6caeOUkoC",
+    publicToken: "443664a3-a674-43dc-97ba-36902209b1fb",
 })
 
+
 const collections = [
-    "home", "aboutus", "navigationBar",
-    "products", "shopingCart", "faq",
-    "footer", "productsReviews", "productView",
-    "faq", "faqQuestions", "productFaq"
+    "header"
 ]
 
 const route = useRoute()
@@ -38,8 +36,7 @@ provide(injectKeys.lang, lang)
 </script>
 
 <template>
-
-<CMSProject :project="project" :collections="collections" :region="lang" >
+<CMSProject :project="project" :collections="collections" :region="lang">
     <Header></Header>
     <NuxtLayout>  
         <NuxtPage />

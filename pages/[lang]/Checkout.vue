@@ -3,7 +3,7 @@
 </script>
 
 <template>
-
+<p>checkout</p>
 </template>
 
 <style scoped lang="scss">

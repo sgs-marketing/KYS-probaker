@@ -19,6 +19,6 @@
   },
   "dependencies": {
     "@vueuse/core": "^10.5.0",
-    "lesscms": "^1.2.3"
+    "lesscms": "^1.2.4"
   }
 }

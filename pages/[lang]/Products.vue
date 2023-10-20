@@ -3,7 +3,7 @@
 </script>
 
 <template>
-    <p>guk tupe</p>
+<p>procuts</p>
 </template>
 
 <style scoped lang="scss">
