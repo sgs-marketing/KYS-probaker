@@ -5,10 +5,9 @@
 <template>
     <main>
         <header>
-        
         </header>
         <section>
-
+            <ContentBlock />
         </section>
     </main>  
 </template>
@@ -17,6 +16,6 @@
     header {
         width: 100%;
         height: 400px;
-        background-color: #2E343C;
+        background-color: var(--primary);
     }
 </style>

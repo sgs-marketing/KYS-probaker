@@ -16,6 +16,7 @@
   --accent: #2E343CB2;
   --test: #2E343C;
   --contrast: #fff;
+  --boxcolor: #efefef;
 
   --border-primary: 1px solid var(--primary);
   --border-accent: 1px solid var(--accent);
