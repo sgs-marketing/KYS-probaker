@@ -3,15 +3,20 @@
 </script>
 
 <template>
-<h1>Test</h1>
-<h2>Test</h2>
-<h3>Test</h3>
-<p>Test</p>
-<button data-dark>to checkout</button><br>
-<input type="text" placeholder="Testing yourself">
-<hr>
+    <main>
+        <header>
+        
+        </header>
+        <section>
+
+        </section>
+    </main>  
 </template>
 
 <style scoped lang="scss">
-
+    header {
+        width: 100%;
+        height: 400px;
+        background-color: #2E343C;
+    }
 </style>
