@@ -9,12 +9,11 @@
 </template>
 
 <style lang="scss">
-@import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Lato:wght@400;500;600;700&display=swap");
 
 :root {
   --primary: #2E343C;
   --accent: #2E343CB2;
-  --test: #2E343C;
   --contrast: #fff;
   --boxcolor: #efefef;
 
@@ -23,6 +22,8 @@
   --border-contrast: 1px solid var(--contrast);
 
   --border-radius: 0.313rem;
+
+  --content-padding: 1rem;
 
   --page-padding: 2.4rem 5.5rem;
   --page-padding-wall: 5.5rem;
@@ -37,7 +38,7 @@
 body, * {
   margin: 0;
   padding: 0;
-  font-family: "Inter", sans-serif;
+  font-family: "Lato", sans-serif;
   box-sizing: border-box;
 
   &[data-bold] {
