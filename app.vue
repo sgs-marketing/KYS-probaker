@@ -85,6 +85,26 @@ body, * {
     border: var(--border-contrast);
   }
 
+  &[data-box] {
+    height: var(--box-height);
+    padding: var(--box-padding);
+  }
+
+  &[data-hover] {
+    &:hover {
+      transition: all 0.2s;
+      cursor: pointer;
+      opacity: 0.6;
+    }
+  }
+
+  &[data-weak-hover] {
+    &:hover {
+      transition: all 0.2s;
+      cursor: pointer;
+      opacity: 0.8;
+    }
+  }
 }
 
 h1 {
@@ -173,7 +193,7 @@ button {
 input {
   user-select: none;
   outline: none;
-  transition: all 0.3s;
+  transition: all 0.2s;
 
   background-color: var(--contrast);
   border: var(--border-contrast);
