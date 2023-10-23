@@ -1,6 +1,4 @@
-<script setup lang=ts>
-
-</script>
+<script setup lang=ts></script>
 
 <template>
     <div class="content-block">
@@ -12,10 +10,17 @@
 
 <style scoped lang=scss>
     .content-block {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
         padding: var(--content-padding);
         border-radius: var(--border-radius);
         width: 250px;
         height: 150px;
         background-color: var(--boxcolor);
+
+        img {
+            width: 25px;
+        }
     }
 </style>
