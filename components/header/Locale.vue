@@ -3,7 +3,7 @@
 </script>
 
 <template>
-<div class="locale" data-border-contrast data-border-radius>
+<div class="locale" data-border-contrast data-border-radius data-box data-weak-hover>
     <img src="/flags/4x3/no.svg" alt="">
     <p data-contrast>Norway / NOK</p>
 </div>
@@ -14,8 +14,6 @@
     display: flex;
     align-items: center;
     gap: 0.5rem;
-    height: var(--box-height);
-    padding: var(--box-padding);
 
     > img {
         height: 1.125rem;

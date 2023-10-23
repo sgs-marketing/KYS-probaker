@@ -14,7 +14,6 @@
 :root {
   --primary: #2E343C;
   --accent: #2E343CB2;
-  --test: #2E343C;
   --contrast: #fff;
   --boxcolor: #efefef;
 
@@ -87,19 +86,20 @@ body, * {
   &[data-box] {
     height: var(--box-height);
     padding: var(--box-padding);
+    min-height: var(--box-height);
   }
 
   &[data-hover] {
+    transition: all 0.2s ease;
     &:hover {
-      transition: all 0.2s;
       cursor: pointer;
       opacity: 0.6;
     }
   }
 
   &[data-weak-hover] {
+    transition: all 0.2s ease;
     &:hover {
-      transition: all 0.2s;
       cursor: pointer;
       opacity: 0.8;
     }
@@ -146,7 +146,7 @@ hr {
 
 button {
   user-select: none;
-  transition: all 0.2s;
+  transition: all 0.2s ease;
 
   background-color: var(--contrast);
   border: var(--border-primary);
@@ -192,7 +192,7 @@ button {
 input {
   user-select: none;
   outline: none;
-  transition: all 0.2s;
+  transition: all 0.2s ease;
 
   background-color: var(--contrast);
   border: var(--border-contrast);
@@ -222,6 +222,12 @@ input {
   &[disabled] {
     opacity: 0.5;
     cursor: not-allowed;
+  }
+
+  &[data-plain] {
+    border: none;
+    height: 100%;
+    padding: 0;
   }
 }
 </style>

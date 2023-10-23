@@ -33,6 +33,34 @@ const lang = computed({
 
 provide(injectKeys.lang, lang)
 
+
+const teststuff = [
+    {
+        name: "fisk",
+        code: "test",
+        icon: "no"
+    },
+    {
+        name: "test2",
+        code: "test2",
+        icon: "sv"
+    },
+    {
+        name: "test3",
+        code: "test3",
+        icon: "fr"
+    },
+    {
+        name: "test4",
+        code: "test4",
+        icon: "sv"
+    },
+    {
+        name: "test5",
+        code: "test5",
+        icon: "sv"
+    }
+]
 </script>
 
 <template>
@@ -42,6 +70,15 @@ provide(injectKeys.lang, lang)
         <NuxtPage />
     </NuxtLayout>
 </CMSProject>
+
+<Selector 
+    :items="teststuff" 
+    current-item-code="test" 
+    :seachable="true" 
+    
+    image-path="/flags/4x3/"
+    image-type=".svg"
+/>
 </template>
 
 <style scoped lang="scss">
