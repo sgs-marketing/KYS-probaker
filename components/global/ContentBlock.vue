@@ -17,7 +17,6 @@
         border-radius: var(--border-radius);
         width: 250px;
         height: 150px;
-        background-color: var(--boxcolor);
 
         img {
             width: 25px;

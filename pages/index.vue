@@ -7,6 +7,8 @@
         <header>
         </header>
         <section>
+            <!-- Eksempler på contentblock med background og uten background. -->
+            <ContentBlock data-box-background />
             <ContentBlock />
         </section>
     </main>  

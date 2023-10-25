@@ -90,6 +90,9 @@ body, * {
     padding: var(--box-padding);
     min-height: var(--box-height);
   }
+  &[data-box-background] {
+    background-color: var(--boxcolor);
+  }
 
   &[data-hover] {
     transition: all 0.2s ease;
